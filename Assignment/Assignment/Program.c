@@ -5,7 +5,7 @@
 
 int main()
 {
-    printf("test!\n");
+    printf("testgg!\n");
 }
 
 // Debug/Run chuong trinh: bam "F5" hoac "Debug > Start Debugging" tren menu
