@@ -242,8 +242,8 @@ void Tinh_tien_dien()
 
 
 		printf("\n================= BANG CHI TIET TIEN DIEN =================\n");
-		printf("%-6s | %-18s | %-18s | %-15s\n",
-			"Bac", "Don gia (dong/kWh)", "San luong (kWh)", "Thanh tien");
+		printf("%-6s | %-18s | %-18s | %-15s\n",// %s la chuoi ky tu, dau - chi dinh chuoi ky tu se can trai (neu khong se tu dong can le phai), "6" la do dai 
+			"Bac", "Don gia (dong/kWh)", "San luong (kWh)", "Thanh tien"); // cac "...." se tuong ung voi cac cot |.....| 
 		printf("------------------------------------------------------------\n");
 
 
