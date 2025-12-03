@@ -409,7 +409,7 @@ void Sap_xep_thong_tin_sinh_vien()
 			scanf("%lf", &score[i]);
 			getchar();
 
-			// Phân lo?i h?c l?c
+			
 			if (score[i] >= 9)
 				strcpy(rank[i], "Xuat sac");
 			else if (score[i] >= 8)
@@ -425,9 +425,9 @@ void Sap_xep_thong_tin_sinh_vien()
 
 
 
-		printf("======================================\n");
+		printf("============================================\n");
 		printf("		 DANH SACH SINH VIEN\n");
-		printf("======================================\n");
+		printf("============================================\n");
 		printf("%-25s %-10s %-15s\n", "Ho ten", "Diem", "Hoc luc");
 
 		for (int i = 0; i < n; i++) {
