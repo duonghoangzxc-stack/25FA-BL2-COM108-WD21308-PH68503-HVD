@@ -124,58 +124,85 @@ void Tinh_tien_cho_quan_Karaoke()
 	do
 	{
 		system("cls");
-		int h1, m1, h2, m2, time, gio, phut;
-		int start, end;
-		float total = 0;
-		do
-		{
-			printf("Nhap gio bat dau (h m): ");
-			scanf("%d %d", &h1, &m1);
-
-			printf("Nhap gio ket thuc (h m): ");
-			scanf("%d %d", &h2, &m2);
-
-			start = h1 * 60 + m1;
-			end = h2 * 60 + m2;
+		int hBD, mBD, hKT, mKT;
+		const int GIA_GIO_DAU = 150000;
+		const float GIAM_30 = 0.7;
+		const float GIAM_10 = 0.9;
 
 
-			if (end < start)
-			{
-				printf("Thoi gian ket thuc phai lon hon thoi gian bat dau!\n");
+		do {
+			printf("Nhap gio bat dau (hh mm): ");
+			scanf("%d %d", &hBD, &mBD);
+
+			if (hBD < 12 || hBD > 23 || mBD < 0 || mBD >= 60) {
+				printf("Gio bat dau khong hop le! Quay lai nhap.\n");
+				continue;
 			}
-			if (h1 < 12 || (h2 > 22 && m2 != 0))
-			{
-				printf("quan karaoke chi hoat dong tu 12 gio den 23 gio!\n");
 
+
+			if (hBD == 23 && mBD > 0) {
+				printf("Quy dinh: Gio bat dau toi da la 23:00!\n");
+				continue;
 			}
-		} while (end < start || h1 < 12 || (h2 > 22 && m2 != 0));
+
+			break;
+
+		} while (1);
 
 
-		time = end - start;
+		do {
+			printf("Nhap gio ket thuc (hh mm): ");
+			scanf("%d %d", &hKT, &mKT);
 
 
-		gio = time / 60;
-		phut = time % 60;
-		printf("Tong thoi gian: %d gio %d phut\n", gio, phut);
+			if (hKT < 12 || hKT > 23 || mKT < 0 || mKT >= 60) {
+				printf("Gio ket thuc khong hop le! Quay lai nhap.\n");
+				continue;
+			}
 
-		int hours = end - start;
 
-		if (hours <= 3)
-		{
-			total = hours * 50000;
+			if (hKT == 23 && mKT > 0) {
+				printf("Quy dinh: Gio ket thuc toi da la 23:00!\n");
+				continue;
+			}
+
+
+			if (hKT < hBD || (hKT == hBD && mKT <= mBD)) {
+				printf("Gio ket thuc phai lon hon gio bat dau!\n");
+				continue;
+			}
+
+			break;
+
+		} while (1);
+
+
+		float start = hBD + mBD / 60.0;
+		float end = hKT + mKT / 60.0;
+		float soGio = end - start;
+
+
+		float tongTien = 0;
+
+		if (soGio <= 3) {
+			tongTien = soGio * GIA_GIO_DAU;
 		}
-		else
-		{
-			total = 150000;
-			int extra = hours - 3;
-			total += extra * 50000 * 0.7;
-		}
-		if (start >= 14 && start <= 17)
-		{
-			total *= 0.9;
+		else {
+			tongTien = 3 * GIA_GIO_DAU;
+			tongTien += (soGio - 3) * (GIA_GIO_DAU * GIAM_30);
 		}
 
-		printf("Tong so tien can thanh toan: %.f VND\n", total);
+
+		if (start >= 14 && start < 18) {
+			tongTien *= GIAM_10;
+		}
+
+
+		printf("\n===== HOA DON KARAOKE =====\n");
+		printf("Gio bat dau : %02d:%02d\n", hBD, mBD);
+		printf("Gio ket thuc: %02d:%02d\n", hKT, mKT);
+		printf("So gio hat : %.2f gio\n", soGio);
+		printf("Tong tien  : %.0f VND\n", tongTien);
 
 		printf("Ban co muon tiep tuc khong? [1 - Co | Khong - Khac]");
 		printf("\n");
