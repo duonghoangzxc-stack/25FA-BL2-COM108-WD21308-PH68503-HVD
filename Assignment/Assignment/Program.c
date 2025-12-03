@@ -21,7 +21,6 @@ void Kiem_tra_so_nguyen()
 	int tieptuc_1;
 	do
 	{
-		printf("\n=== KIEM TRA SO ===\n");
 		double so;
 		system("cls");
 		printf("Moi nhap so: ");
@@ -79,7 +78,6 @@ void Kiem_tra_so_nguyen()
 }
 void Tim_uoc_chung_va_boi_chung_cua_2_so()
 {
-	printf("\n=== TIM UCLN VA BCNN CUA 2 SO ===\n");
 	int tieptuc_2;
 	do
 	{
@@ -87,8 +85,16 @@ void Tim_uoc_chung_va_boi_chung_cua_2_so()
 		double x, y;
 		do
 		{
-			printf("Nhap hai so: ");
-			scanf("%lf %lf", &x, &y);
+			do
+			{
+				printf("Nhap hai so: ");
+				scanf("%lf %lf", &x, &y);
+				if (x == y)
+				{
+					printf("Hai so phai khac nhau, vui long nhap lai!\n");
+				}
+			} while (x == y);
+
 			if (x == (int)x && y == (int)y)
 			{
 				int ucln = gcd(x, y);
@@ -189,7 +195,9 @@ void Tinh_tien_dien()
 		int muc_kwh[] = { 50, 50, 100, 100, 100, 999999 };
 		float gia[] = { 1678, 1734, 2014, 2536, 2834, 2927 };
 
-		printf("\n=== TINH TIEN DIEN ===\n");
+		printf("======================================\n");
+		printf("			TINH TIEN DIEN \n");
+		printf("======================================\n");
 		printf("Nhap so kWh dien su dung: ");
 		scanf("%d", &kwh);
 
@@ -198,7 +206,7 @@ void Tinh_tien_dien()
 			return;
 		}
 
-		// Gi?i h?n và giá t?ng b?c
+
 		int bac[] = { 50, 50, 100, 100, 100, 999999 };
 		double giatien[] = { 1.678, 1.734, 2.014, 2.536, 2.834, 2.927 };
 
@@ -211,7 +219,7 @@ void Tinh_tien_dien()
 			"Bac", "Don gia (dong/kWh)", "San luong (kWh)", "Thanh tien");
 		printf("------------------------------------------------------------\n");
 
-		// Tính t?ng b?c và in b?ng
+
 		for (int i = 0; i < 6; i++) {
 			if (kwh <= daDung) break;
 
@@ -223,10 +231,10 @@ void Tinh_tien_dien()
 			daDung += dungBac;
 
 			printf("%-6d | %-18.3f | %-18d | %-15.0f\n",
-				i + 1,     // B?c
-				gia[i],    // ??n giá
-				dungBac,   // S?n l??ng
-				tienBac);  // Thành ti?n
+				i + 1,
+				gia[i],
+				dungBac,
+				tienBac);
 		}
 
 		printf("so tien phai tra: %.0f dong\n", tongTien);
@@ -256,7 +264,8 @@ void Doi_tien()
 		{
 			int soTo = soTien / menhGia[i];
 
-			if (soTo > 0) {        // ch? in khi có t?
+			if (soTo > 0)
+			{
 				printf("- %d to %d\n", soTo, menhGia[i]);
 				soTien %= menhGia[i];
 			}
@@ -275,7 +284,7 @@ void Tinh_lai_suat_vay_ngan_hang_vay_tra_gop()
 	{
 		system("cls");
 		long long tienVay;
-		const double laiSuat = 0.05;   // 5%/tháng
+		const double laiSuat = 0.05;
 		const int soThang = 12;
 
 		printf("Nhap so tien muon vay: ");
@@ -310,6 +319,33 @@ void Vay_tien_mua_xe()
 	do
 	{
 		system("cls");
+		double phantram;
+		do
+		{
+			printf("Nhap %% vay toi da (VD: 80%% -> tra truoc 20%% gia tri, tra gop 80%% gia tri): ");
+			scanf("%lf", &phantram);
+			if (phantram >= 100 || phantram <= 0)
+			{
+				printf("khoan vay khong hop le, vui long nhap lai (khoan vay khong dc >= 100%% hoac <= 0)\n");
+			}
+		} while (phantram >= 100 || phantram <= 0);
+
+
+		double xe = 500000000;
+		double vay = xe * phantram / 100;
+		double traTruoc = xe - vay;
+		int thang = 24 * 12;
+		double laiThang = 0.072 / 12;
+		double gocThang = vay / thang;
+		printf("Tra truoc: %.0f VND\n", traTruoc);
+		printf("Tra 12 thang dau:\n");
+
+		for (int i = 1; i <= 12; i++) {
+			double tienLai = vay * laiThang;
+			double phaiTra = gocThang + tienLai;
+			vay -= gocThang;
+			printf("Thang %d: %.0f VND\n", i, phaiTra);
+		}
 
 		printf("Ban co muon tiep tuc khong?  [1 - Co | Khong - Khac]");
 		printf("\n");
@@ -323,15 +359,16 @@ void Sap_xep_thong_tin_sinh_vien()
 	int tieptuc_8;
 	do
 	{
+
 		system("cls");
 		int n;
-		char name[100][50];     // m?ng 2 chi?u l?u h? tên
-		double score[100];      // m?ng l?u ?i?m
-		char rank[100][20];     // m?ng 2 chi?u l?u h?c l?c
+		char name[100][50];
+		double score[100];
+		char rank[100][20];
 
 		printf("Nhap so luong sinh vien: ");
 		scanf("%d", &n);
-		getchar(); // xóa b? ??m
+		getchar();
 
 
 		for (int i = 0; i < n; i++) {
@@ -361,7 +398,9 @@ void Sap_xep_thong_tin_sinh_vien()
 
 
 
-		printf("\n===== DANH SACH SINH VIEN =====\n");
+		printf("======================================\n");
+		printf("		 DANH SACH SINH VIEN\n");
+		printf("======================================\n");
 		printf("%-25s %-10s %-15s\n", "Ho ten", "Diem", "Hoc luc");
 
 		for (int i = 0; i < n; i++) {
