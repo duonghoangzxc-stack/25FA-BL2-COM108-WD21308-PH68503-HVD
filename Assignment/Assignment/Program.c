@@ -421,10 +421,6 @@ void Sap_xep_thong_tin_sinh_vien()
 			else
 				strcpy(rank[i], "Yeu");
 		}
-
-
-
-
 		printf("============================================\n");
 		printf("		 DANH SACH SINH VIEN\n");
 		printf("============================================\n");
@@ -458,20 +454,30 @@ void Xay_dung_game_FPOLY_LOTT()
 		printf("======================================\n");
 
 		printf("Luu y, hay nhap so nguyen!!");
-		printf("Nhap so thu nhat (01 - 15): \n");
+		do
+		{
+			printf("Nhap so thu nhat (01 - 15): \n");
 
-		scanf("%d", &user_num1);
+			scanf("%d", &user_num1);
+			if (user_num1 < 1 || user_num1 >15)
+			{
+				printf("=> Loi: So phai nam trong pham vi 01 den 15. Vui long nhap lai.\n");
+			}
+		} while (user_num1 <1 || user_num1 >15);
+		
 
 
 		do {
 			printf("Nhap so thu hai (01 - 15, khac so tren): ");
 			scanf("%d", &user_num2);
 
-			if (user_num2 == user_num1) {
+			if (user_num2 == user_num1) 
+			{
 				printf("=> Loi: Hai so phai khac nhau. Vui long nhap lai.\n");
 			}
 
-			else if (user_num2 < 1 || user_num2 > 15 || user_num1 < 1 || user_num1 > 15) {
+			else if ( user_num2 < 1 || user_num2 > 15 || user_num1 < 1 || user_num1 > 15 ) 
+			{
 				printf("=> Loi: So phai nam trong pham vi 01 den 15. Vui long nhap lai.\n");
 			}
 		} while (user_num2 == user_num1 || user_num2 < 1 || user_num2 > 15 || user_num1 < 1 || user_num1 > 15);
