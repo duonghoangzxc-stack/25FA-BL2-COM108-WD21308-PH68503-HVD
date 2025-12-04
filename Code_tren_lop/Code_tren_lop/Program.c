@@ -1,6 +1,7 @@
 
 
 #include <stdio.h>
+#include <string.h>
 
 void kiemTraSoNguyen()
 {
@@ -53,16 +54,34 @@ void demo_mang2chieu()
 		}
 	}
 }
+void demo_string()
+{
+	char mangKytu[10];
+	while (getchar() != '\n'); // clear buffer
+	printf("Nhap chuoi ky tu: ");
+	fgets(mangKytu, sizeof(mangKytu), stdin);
+	printf("%s", mangKytu);
+	printf("\n");
+
+	/*printf("string length: ");
+	printf("%d\n", strlen(mangKytu) -1 );
+	printf("string compare: ");
+	printf("%d", strcmp ("D", "A"));
+	printf("\n");
+	printf("string compare: ");
+	printf("%d", strcmp ("A", "D"));
+	printf("\n");*/
+	printf("string reverse: ");
+	printf("%s", strrev (mangKytu));
+	printf("\n");
+	printf("string upper: ");
+	printf("%s", strupr (mangKytu));
+	printf("\n");
+
+}
 void lapChucNang(int chonChucNang)
 {
 	
-
-
-
-
-
-
-
 	int tiepTuc = 1;
 	while (tiepTuc == 1)
 	{
@@ -72,7 +91,7 @@ void lapChucNang(int chonChucNang)
 			kiemTraSoNguyen();
 			break;
 		case 2:
-			uocChungBoiChung();
+			demo_string();
 			break;
 		case 3:
 			demo_mang2chieu();
@@ -100,7 +119,7 @@ int main()
 		printf("\n");
 		printf("1. Kiem Tra So Nguyen");
 		printf("\n");
-		printf("2. TEN chuc nang 2");
+		printf("2. Demo string");
 		printf("\n");
 		printf("3. Demo mang 2 chieu ");
 		printf("\n");
