@@ -30,8 +30,10 @@ void thongTinthucung()
 
 	}
 	
-	
 	for (int i = 0; i < n; i++) {
-		printf("\n", ten[i], tuoi, maThucung[i]);
+		printf("\nThu cung %d:\n", i + 1);
+		printf("Ten: %s\n", ten[i]);
+		printf("Tuoi: %d\n", tuoi);
+		printf("Ma thu cung: %s\n", maThucung[i]);
 	}
 }
